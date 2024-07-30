@@ -25,15 +25,19 @@ bool send_c(pid_t pid, char c)
 	unsigned char u_char;
 	
 	u_char = c;
-	i = 0;
-	while(i < 8)
+	i = 7;
+	while(i >= 0)
 	{
-		usleep(50);
+		usleep(1000);
 		bit = (u_char >> i) & 1;
-		printf("%d\n", bit);
-		kill(pid, SIGUSR1 + bit);
-		i++;
+		printf("%d", bit);
+		if (bit == 0)
+			kill(pid, SIGUSR1);
+		else if (bit == 1)
+			kill(pid, SIGUSR2);
+		i--;
 	}
+	printf(" = %c\n", c);
 	return (0);
 }
 
