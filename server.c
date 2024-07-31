@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:46:13 by yooshima          #+#    #+#             */
-/*   Updated: 2024/07/24 17:51:21 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/07/31 18:56:16 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <signal.h>
-#include "./libft/libft.h"
+#include "ft_printf/libft/libft.h"
 
 unsigned char uc = 0;
 
@@ -48,7 +48,7 @@ int main(void)
 
 	printf("%d\n", getpid());
 	func = print_ascii;
-	memset(&sa1, 0, sizeof(sa1));//change to ft
+	ft_memset(&sa1, 0, sizeof(sa1));//change to ft
 	sa1.sa_sigaction = func;
 	sigemptyset(&sa1.sa_mask);
 	sa1.sa_flags = SA_SIGINFO;

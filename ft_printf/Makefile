@@ -5,37 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/24 15:23:57 by yooshima          #+#    #+#              #
-#    Updated: 2024/07/31 18:30:25 by yooshima         ###   ########.fr        #
+#    Created: 2024/05/07 14:59:59 by yooshima          #+#    #+#              #
+#    Updated: 2024/07/31 18:31:55 by yooshima         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-C_NAME		= client
-S_NAME		= server
-LIBFT_PATH	= ft_printf/libft/libft
+NAME		= libftprintf.a
 
+SRCS		= ft_printf.c put_hex.c put_int_char.c
 
-OBJS		= ${*_SRCS:.c=.o}
+OBJS		= ${SRCS:.c=.o}
 
-CC			= gcc
+CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 
-all:		${C_NAME} ${S_NAME}
+AR			= ar rcs
+RM			= rm -f
 
-client:	client.c
-			$(MAKE) -C ft_printf
-			$(CC) $(CFLAGS) client.c ft_printf/libftprintf.a $(LIBFT_PATH).a -o client
-server:	server.c
-			$(MAKE) -C ft_printf
-			$(CC) $(CFLAGS) server.c ft_printf/libftprintf.a $(LIBFT_PATH).a -o server
+all:		${NAME}
+
+${NAME}:	${OBJS}
+			$(MAKE) -C libft
+			${AR} ${NAME} ${OBJS}
+
+%.o: %.c
+		$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-			$(MAKE) -C ft_printf clean
+			${RM} ${OBJS}
 
-fclean:
-			$(MAKE) -C ft_printf fclean
-			${RM} ${C_NAME} ${S_NAME}
+fclean:		clean
+			${RM} ${NAME}
 
 re:			fclean all
 
-.PHONY:		all fclean re bonus
+.PHONY:		all clean fclean re
