@@ -16,6 +16,7 @@
 #include <string.h>
 #include <signal.h>
 #include "ft_printf/libft/libft.h"
+#include "ft_printf/ft_printf.h"
 
 unsigned char	g_uc = 0;
 
@@ -44,7 +45,7 @@ int	main(void)
 	struct sigaction	sa;
 	void				*func;
 
-	ft_printf("%d\n", getpid());
+	ft_printf("PID: %d\n", getpid());
 	func = print_ascii;
 	ft_memset(&sa, 0, sizeof(sa));
 	sa.sa_handler = func;

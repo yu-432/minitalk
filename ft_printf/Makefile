@@ -37,7 +37,7 @@ clean:
 
 
 fclean:		clean
-			$(MAKE) -C fclean
+			$(MAKE) -C libft fclean
 			${RM} ${NAME}
 
 re:			fclean all

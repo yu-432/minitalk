@@ -31,14 +31,12 @@ bool	send_c(pid_t pid, char c)
 	{
 		usleep(50);
 		bit = (u_char >> i) & 1;
-		printf("%d", bit);
 		if (bit == 0)
 			kill(pid, SIGUSR1);
 		else if (bit == 1)
 			kill(pid, SIGUSR2);
 		i--;
 	}
-	printf(" = %c\n", c);
 	return (0);
 }
 
@@ -60,7 +58,7 @@ int	main(int argc, char *argv[])
 {
 	pid_t	pid;
 
-	if (argc != 3)
+	if (argc < 3)
 	{
 		ft_putstr_fd("Error: Incorrect arguments\n", 2);
 		return (1);
