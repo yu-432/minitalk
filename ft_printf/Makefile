@@ -6,7 +6,7 @@
 #    By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 14:59:59 by yooshima          #+#    #+#              #
-#    Updated: 2024/07/31 18:31:55 by yooshima         ###   ########.fr        #
+#    Updated: 2024/08/01 16:00:00 by yooshima         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,11 @@ ${NAME}:	${OBJS}
 
 clean:
 			${RM} ${OBJS}
+			$(MAKE) -C libft clean
+
 
 fclean:		clean
+			$(MAKE) -C fclean
 			${RM} ${NAME}
 
 re:			fclean all
