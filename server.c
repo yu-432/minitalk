@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:46:13 by yooshima          #+#    #+#             */
-/*   Updated: 2024/07/31 18:56:16 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:11:23 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,44 +17,42 @@
 #include <signal.h>
 #include "ft_printf/libft/libft.h"
 
-unsigned char uc = 0;
+unsigned char	g_uc = 0;
 
-void print_ascii(int signo, siginfo_t *info, void *v)
+void	print_ascii(int signo)
 {
-	static int i = 0;
-	(void)v;
-	if (info == NULL)
-		return ;
+	static int	i = 0;
+
 	if (signo == SIGUSR1)
-		uc |= 0;
+		g_uc |= 0;
 	else if (signo == SIGUSR2)
-		uc |= 1;
+		g_uc |= 1;
 	i++;
 	if (i == 8)
 	{
-		write(1, &uc, 1);
+		write(1, &g_uc, 1);
 		i = 0;
-		uc = 0;
+		g_uc = 0;
 	}
 	else
-		uc = uc << 1;
+		g_uc = g_uc << 1;
 	return ;
 }
 
-int main(void)
+int	main(void)
 {
-	struct sigaction sa1;
-	void *func;
+	struct sigaction	sa;
+	void				*func;
 
-	printf("%d\n", getpid());
+	ft_printf("%d\n", getpid());
 	func = print_ascii;
-	ft_memset(&sa1, 0, sizeof(sa1));//change to ft
-	sa1.sa_sigaction = func;
-	sigemptyset(&sa1.sa_mask);
-	sa1.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &sa1, NULL);
-	sigaction(SIGUSR2, &sa1, NULL);
-	while(1)
+	ft_memset(&sa, 0, sizeof(sa));
+	sa.sa_handler = func;
+	sa.sa_flags = 0;
+	sigemptyset(&sa.sa_mask);
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	while (1)
 	{
 	}
 	return (0);
