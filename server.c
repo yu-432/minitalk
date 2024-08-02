@@ -6,14 +6,10 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:46:13 by yooshima          #+#    #+#             */
-/*   Updated: 2024/08/01 14:11:23 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/08/02 14:12:24 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
 #include <signal.h>
 #include "ft_printf/libft/libft.h"
 #include "ft_printf/ft_printf.h"
@@ -43,12 +39,9 @@ void	print_ascii(int signo)
 int	main(void)
 {
 	struct sigaction	sa;
-	void				*func;
 
 	ft_printf("PID: %d\n", getpid());
-	func = print_ascii;
-	ft_memset(&sa, 0, sizeof(sa));
-	sa.sa_handler = func;
+	sa.sa_handler = print_ascii;
 	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
