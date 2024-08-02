@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:50:13 by yooshima          #+#    #+#             */
-/*   Updated: 2024/08/02 16:59:57 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/08/02 17:03:54 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ bool	send_c(pid_t pid, char c)
 {
 	unsigned char	uc;
 	int				i;
-	int				bit;
 	int				kill_res;
 
 	uc = c;
