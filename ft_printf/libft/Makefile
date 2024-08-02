@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yooshima <yooshima@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/24 15:23:57 by yooshima          #+#    #+#              #
-#    Updated: 2024/05/08 10:31:07 by yooshima         ###   ########.fr        #
+#    Updated: 2024/08/02 15:03:07 by yooshima         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ BONUS_SRCS	= ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 OBJS		= ${SRCS:.c=.o}
 BONUS_OBJS	= ${BONUS_SRCS:.c=.o}
 
-CC			= cc
+CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
 AR			= ar rcs

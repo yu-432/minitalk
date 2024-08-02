@@ -6,7 +6,7 @@
 #    By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 14:59:59 by yooshima          #+#    #+#              #
-#    Updated: 2024/08/01 16:00:00 by yooshima         ###   ########.fr        #
+#    Updated: 2024/08/02 15:02:58 by yooshima         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS		= ft_printf.c put_hex.c put_int_char.c
 
 OBJS		= ${SRCS:.c=.o}
 
-CC			= cc
+CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
 AR			= ar rcs
