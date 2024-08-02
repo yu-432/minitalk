@@ -6,7 +6,7 @@
 /*   By: yooshima <yooshima@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 16:50:13 by yooshima          #+#    #+#             */
-/*   Updated: 2024/08/01 14:08:45 by yooshima         ###   ########.fr       */
+/*   Updated: 2024/08/02 13:44:13 by yooshima         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@
 
 bool	send_c(pid_t pid, char c)
 {
-	unsigned char	u_char;
+	unsigned char	uc;
 	int				i;
 	int				bit;
 
-	u_char = c;
+	uc = c;
 	i = 7;
 	while (i >= 0)
 	{
-		usleep(50);
-		bit = (u_char >> i) & 1;
+		usleep(200);
+		bit = (uc >> i) & 1;
 		if (bit == 0)
 			kill(pid, SIGUSR1);
 		else if (bit == 1)
@@ -58,7 +58,7 @@ int	main(int argc, char *argv[])
 {
 	pid_t	pid;
 
-	if (argc < 3)
+	if (argc != 3)
 	{
 		ft_putstr_fd("Error: Incorrect arguments\n", 2);
 		return (1);
